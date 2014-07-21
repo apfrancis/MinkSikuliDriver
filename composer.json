@@ -1,0 +1,19 @@
+{
+    "name":         "behat/mink-sikuli-driver",
+    "description":  "Sikuli driver for Mink framework",
+    "keywords":     [],
+    "homepage":     "http://mink.behat.org/",
+    "type":         "mink-driver",
+
+    "require": {
+        "php":                  ">=5.3.1",
+        "behat/mink":           "~1.6@dev",
+        "behat/sikuli-client":  "~1.2@dev"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Behat\\Mink\\Driver": "src/"
+        }
+    }
+}
