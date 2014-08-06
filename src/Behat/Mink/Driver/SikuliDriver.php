@@ -133,17 +133,21 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
 
     public function checkExists($image, $secondsToWait = false){
         $secondsToWait = !$secondsToWait ? self::DEFAULT_SECONDS_TO_WAIT : $secondsToWait;
-        return ($this->_sikuliConnection->callFunc('exists',[$image,$secondsToWait]) !== "");
+        return ($this->_sikuliConnection->callFunc('exists',array($image,$secondsToWait)) !== "");
     }
 
     public function shouldAppear($image, $secondsToWait = false){
         $secondsToWait = !$secondsToWait ? self::DEFAULT_SECONDS_TO_WAIT : $secondsToWait;
-        return ($this->_sikuliConnection->callFunc('wait',[$image,$secondsToWait]) !== "");
+        return ($this->_sikuliConnection->callFunc('wait',array($image,$secondsToWait)) !== "");
     }
 
     public function shouldVanish($image, $secondsToWait = false){
         $secondsToWait = !$secondsToWait ? self::DEFAULT_SECONDS_TO_WAIT : $secondsToWait;
-        return ($this->_sikuliConnection->callFunc('waitVanish',[$image,$secondsToWait]) !== "");
+        return ($this->_sikuliConnection->callFunc('waitVanish',array($image,$secondsToWait)) !== "");
+    }
+
+    public function findOCR($ps, $region=null, $similarity=null){
+        $this->_sikuliConnection->find($ps, $region, $similarity);
     }
 
     /**
@@ -267,9 +271,9 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
      *
      * @param string $xpath
      */
-    public function click($xpath)
+    public function click($region)
     {
-        // TODO: Implement click() method.
+        $this->_sikuliConnection->click($region);
     }
 
     /**
@@ -282,4 +286,4 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
     {
         // TODO: Implement attachFile() method.
     }
-}
+} 
