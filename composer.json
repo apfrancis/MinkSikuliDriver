@@ -5,10 +5,17 @@
     "homepage":     "http://mink.behat.org/",
     "type":         "mink-driver",
 
+    "repositories":[
+        {
+            "type":"vcs",
+            "url":"https://github.com/apfrancis/SikuliClient.git"
+        }
+    ],
+
     "require": {
         "php":                  ">=5.3.1",
         "behat/mink":           "~1.6@dev",
-        "behat/sikuli-client":  "~1.2@dev"
+        "behat/sikuli-client":  "dev-master"
     },
 
     "autoload": {
