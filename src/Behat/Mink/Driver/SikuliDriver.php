@@ -117,18 +117,9 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
         // TODO: Implement find() method.
     }
 
-    public function setProxy()
+    public function setProxy($proxyHost, $proxyPort)
     {
-        if($this->_sikuliConnection->getOS())
-        $this->_sikuliConnection->keyDown('Key.CMD + ,');
-        $this->_sikuliConnection->click('/Forge/workspace/bbccom_qa/behat/vendor/behat/sikuli-client/img/mac-os/firefox/preferences/advanced.png');
-        $this->_sikuliConnection->click('/Forge/workspace/bbccom_qa/behat/vendor/behat/sikuli-client/img/mac-os/firefox/preferences/advanced/network/settings.png');
-        $this->_sikuliConnection->click('/Forge/workspace/bbccom_qa/behat/vendor/behat/sikuli-client/img/mac-os/firefox/preferences/advanced/network/manual-proxy-configuration.png');
-        $this->_sikuliConnection->type('10.4.208.251');
-        $this->_sikuliConnection->keyDown('Key.TAB');
-        $this->_sikuliConnection->type('80');
-        $this->_sikuliConnection->keyDown('Key.ENTER');
-        $this->_sikuliConnection->keyDown('Key.ESC');
+        $this->_sikuliConnection->setProxy($proxyHost, $proxyPort);
     }
 
     public function checkExists($image, $secondsToWait = false){
