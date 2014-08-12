@@ -141,6 +141,14 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
         $this->_sikuliConnection->find($ps, $region, $similarity);
     }
 
+    public function getImageForOs($path){
+        if(stristr($path,'{os}')){
+            return str_replace('{os}',$this->_sikuliConnection->getOS(),$path);
+        } else {
+            throw new \Exception('there is no substitution {os} in the image path');
+        }
+    }
+
     /**
      * Returns element's tag name by it's XPath query.
      *
