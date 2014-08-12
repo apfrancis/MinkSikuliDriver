@@ -119,7 +119,7 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
 
     public function setProxy($proxyHost, $proxyPort)
     {
-        $this->_sikuliConnection->setProxy($proxyHost, $proxyPort);
+        $this->client->setProxy($proxyHost, $proxyPort);
     }
 
     public function checkExists($image, $secondsToWait = false){
