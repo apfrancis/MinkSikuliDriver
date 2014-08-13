@@ -10,6 +10,7 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
 
     private $_browserName;
     private $_sikuliConnection = null;
+    private $_settings;
 
     /**
      * Initializes Sikuli driver.
@@ -17,7 +18,7 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
      * @param string $browserName browser to start (firefox, safari, ie, etc...)
      * @param Client $client      Sikuli client instance
      */
-    public function __construct($browserName, Client $client = null)
+    public function __construct($browserName, Client $client = null, $settings = array())
     {
         if (null === $client) {
             $client = new Client();
@@ -26,6 +27,7 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
         $this->client = $client;
         $this->_sikuliConnection = $this->client->getConnection();
         $this->_browserName = $browserName;
+        $this->_settings = $settings;
     }
 
 
@@ -44,7 +46,7 @@ class SikuliDriver extends \Behat\Mink\Driver\CoreDriver {
      */
     public function start()
     {
-        $this->client->start($this->_browserName);
+        $this->client->start($this->_browserName,$this->_settings);
     }
 
     /**
